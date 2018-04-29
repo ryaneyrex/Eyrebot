@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Eyrebot.Models;
-using Eyrebot.Models.ManageViewModels;
+using Eyrebot.ViewModels.ManageViewModels;
 using Eyrebot.Services;
 
 namespace Eyrebot.Controllers

@@ -2,6 +2,10 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/Eyrebot",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:58910/",
       "sslPort": 44394
@@ -17,8 +21,9 @@
       }
     },
     "Eyrebot": {
-      "commandName": "Project",
+      "commandName": "IIS",
       "launchBrowser": true,
+      "launchUrl": "http://localhost/Eyrebot",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

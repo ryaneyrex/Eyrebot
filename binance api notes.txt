@@ -1,0 +1,5 @@
+https://api.binance.com/api/v1/trades?symbol=BTCUSDT  - last 500 trades 
+https://api.binance.com/api/v1/depth?symbol=BTCUSDT - depth (upto default 100, max 1000 of looks like buy or sell orders
+https://api.binance.com/api/v1/ticker/24hr?symbol=BTCUSDT - 24hr ticker price change statistics
+https://api.binance.com/api/v1/klines?symbol=BTCUSDT&interval=4h - 4 hr bars most recent
+https://api.binance.com/api/v1/klines?symbol=BTCUSDT&interval=4h&limit=122 - 4 hr bars (approx 1 monnth)

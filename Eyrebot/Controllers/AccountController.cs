@@ -10,9 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Eyrebot.Models;
-using Eyrebot.Models.AccountViewModels;
 using Eyrebot.Services;
+using Eyrebot.ViewModels.AccountViewModels;
+using Eyrebot.Models;
 
 namespace Eyrebot.Controllers
 {

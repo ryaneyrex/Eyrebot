@@ -9,8 +9,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Eyrebot.Data;
-using Eyrebot.Models;
 using Eyrebot.Services;
+using Eyrebot.Models;
 
 namespace Eyrebot
 {
@@ -36,6 +36,8 @@ namespace Eyrebot
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 
+            services.AddTransient<ICurrencyService, CurrencyService>();
+
             services.AddMvc();
         }
 
@@ -55,13 +57,16 @@ namespace Eyrebot
 
             app.UseStaticFiles();
 
+
             app.UseAuthentication();
 
-            app.UseMvc(routes =>
+            app.UseMvc(config =>
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                config.MapRoute(
+                    name: "Default",
+                    template: "{controller}/{action}/{id?}",
+                    defaults: new { controller = "Home", action = "Index" }
+                    );
             });
         }
     }
