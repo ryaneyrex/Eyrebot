@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Eyrebot.Models;
 
-namespace Eyrebot.Controllers
+namespace Eyrebot.Models
 {
     public class HomeController : Controller
     {

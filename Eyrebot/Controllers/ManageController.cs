@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
@@ -9,12 +8,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Eyrebot.Models;
 using Eyrebot.ViewModels.ManageViewModels;
 using Eyrebot.Services;
 
-namespace Eyrebot.Controllers
+namespace Eyrebot.Models
 {
     [Authorize]
     [Route("[controller]/[action]")]

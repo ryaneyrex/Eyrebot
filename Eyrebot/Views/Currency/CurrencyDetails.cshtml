@@ -1,8 +1,9 @@
-﻿@model Eyrebot.ViewModels.CurrencyDetailsViewModel
+﻿@model Eyrebot.Models.BinanceCurrencyDetailsModel
 
-@{ 
+@{
     ViewData["Title"] = "CurrencyDetails";
 }
+
 
 <div class="row">
     <div class="col-md-12">
@@ -13,42 +14,42 @@
 <div class="row">
     <div class="col-md-12">
         <p>Last purchase price:</p>
-        <h2>$@ViewBag.LastPrice</h2>
-        <h2>@ViewBag.PriceChangePercent%</h2>
+        <h2>$@Html.ValueFor(model => model.LastPrice)</h2>
+        <h2>$@Html.ValueFor(model => model.PriceChangePercent) %</h2>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-12">
         <p>Weighted average price:</p>
-        <h2>$@ViewBag.WeightedAvgPrice</h2>
+        <h2>$@Html.ValueFor(model => model.WeightedAvgPrice)</h2>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-12">
         <p>Previous close price:</p>
-        <h2>$@ViewBag.PrevClosePrice</h2>
+        <h2>$@Html.ValueFor(model => model.PrevClosePrice)</h2>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-12">
         <p>High:</p>
-        <h2>$@ViewBag.HighPrice</h2>
+        <h2>$@Html.ValueFor(model => model.HighPrice)</h2>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-12">
         <p>Low:</p>
-        <h2>$@ViewBag.LowPrice</h2>
+        <h2>$@Html.ValueFor(model => model.LowPrice)</h2>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-12">
         <p>Volume:</p>
-        <h2>@ViewBag.Volume</h2>
+        <h2>$@Html.ValueFor(model => model.Volume)</h2>
     </div>
 </div>

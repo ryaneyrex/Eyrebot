@@ -1,9 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using Eyrebot.Models;
+using System.Threading.Tasks;
 
 namespace Eyrebot.Services
 {
-    public interface ICurrencyService
+    public interface IBinanaceCurrencyService
     {
-        Task<Currency24hTickerPriceChangeDetailsResult> GetCurrency24hTickerPriceChangeDetailsForCurrencyAsync(string symbol);
+        Task<BinanceCurrencyDetailsModel> GetCurrency24hTickerPriceChangeDetailsForCurrencyAsync(string symbol);
     }
 }

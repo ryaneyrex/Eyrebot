@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Eyrebot.Services;
 
-namespace Eyrebot.Services
+namespace Eyrebot.Models
 {
     public static class EmailSenderExtensions
     {
