@@ -5,6 +5,6 @@ namespace Eyrebot.Services
 {
     public interface IBinanaceCurrencyService
     {
-        Task<BinanceCurrencyDetailsModel> GetCurrency24hTickerPriceChangeDetailsForCurrencyAsync(string symbol);
+        Task<BinanceCurrencyDetailsModel> GetProductTicker(string symbol);
     }
 }

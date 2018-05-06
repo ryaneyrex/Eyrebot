@@ -1,4 +1,5 @@
 ﻿using Eyrebot.Models;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Net.Http;
@@ -8,12 +9,19 @@ namespace Eyrebot.Services
 {
     public class BinanceCurrencyService : IBinanaceCurrencyService
     {
+        private IConfigurationRoot _config;
+
+        public BinanceCurrencyService(IConfigurationRoot config)
+        {
+            _config = config;
+        }
+
         /// <summary>
         /// Returns 24h ticker price change details for a currency
         /// </summary>
         /// <param name="symbol">Name of the currency e.g BTCUSDT</param>
         /// <returns></returns>
-        public async Task<BinanceCurrencyDetailsModel> GetCurrency24hTickerPriceChangeDetailsForCurrencyAsync(string symbol)
+        public async Task<BinanceCurrencyDetailsModel> GetProductTicker(string symbol)
         {
             var result = new BinanceCurrencyDetailsModel()
             {
@@ -21,7 +29,8 @@ namespace Eyrebot.Services
                 Message = "Failed to get currency details"
             };
 
-            var url = $"https://api.binance.com/api/v1/ticker/24hr?symbol={symbol}";
+            var apiUrl = _config["ApiKeys:Binance"];
+            var url = $"{apiUrl}/ticker/24hr?symbol={symbol}";
 
             var client = new HttpClient();
 

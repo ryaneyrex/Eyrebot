@@ -6,32 +6,30 @@ using Moq;
 namespace Eyrebot.Models.UnitTests
 {
     [TestClass]
-    public class BinanceCurrencyServiceTests
+    public class GdaxCurrencyServiceTests
     {
-        private IBinanaceCurrencyService _binanceCurrencyService;
+        private IGdaxCurrencyService _gdaxCurrencyService;
         private IConfigurationRoot _config;
 
         [TestInitialize]
         public void Initalize()
         {
             var mockConfigurationRoot = new Mock<IConfigurationRoot>();
-            mockConfigurationRoot.SetupGet(x => x[It.IsAny<string>()]).Returns("https://api.binance.com/api/v1");
+            mockConfigurationRoot.SetupGet(x => x[It.IsAny<string>()]).Returns("https://api.gdax.com");
             var config = mockConfigurationRoot.Object;
             _config = config;
 
-            this._binanceCurrencyService = new BinanceCurrencyService(_config);
+            this._gdaxCurrencyService = new GdaxCurrencyService(_config);
         }
 
         [TestMethod]
         public void GetCurrency24hTickerPriceChangeDetailsForCurrency_WithValidParameters_ReturnsValidResult()
         {
-            var symbol = "BTCUSDT";
-            var response = _binanceCurrencyService.GetProductTicker(symbol);
+            var symbol = "BTC-USD";
+            var response = _gdaxCurrencyService.GetProductTicker(symbol);
 
             Assert.IsNotNull(response.Result);
             Assert.AreEqual(symbol, response.Result.Symbol);
         }
-
-
     }
 }
