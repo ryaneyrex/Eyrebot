@@ -2,19 +2,19 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace Eyrebot.Models
+namespace Eyrebot.Controllers
 {
     public class BinanceCurrencyController : Controller
     {
-        private IBinanaceCurrencyService _currencyService;
+        private IBinanceCurrencyService _currencyService;
         
 
-        public BinanceCurrencyController(IBinanaceCurrencyService currencyService)
+        public BinanceCurrencyController(IBinanceCurrencyService currencyService)
         {
             this._currencyService = currencyService;
         }
 
-        public async Task<IActionResult> CurrencyDetails()
+        public async Task<IActionResult> GetCurrencyDetails()
         {
             ViewData["Message"] = "Currency details page";
             ViewData["Name"] = "BTC/USDT";
@@ -22,7 +22,7 @@ namespace Eyrebot.Models
             
 
             var symbol = "BTCUSDT";
-            var result = await _currencyService.GetProductTicker(symbol);
+            var result = await _currencyService.GetCurrency24hTickerPriceChangeDetails(symbol);
 
             return View(result);
         }

@@ -7,7 +7,7 @@ namespace Eyrebot.Models
         public bool Success { get; set; }
         public string Message { get; set; }
         public string Symbol { get; set; }
-        public Int32 TradeId { get; set; }
+        public Int64 TradeId { get; set; }
         public decimal Price { get; set; }
         public decimal Size { get; set; }
         public decimal Bid { get; set; }

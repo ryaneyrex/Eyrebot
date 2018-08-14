@@ -1,0 +1,34 @@
+﻿@model Eyrebot.Models.GdaxCurrencyDetailsModel
+
+@{
+    ViewData["Title"] = "Gdax currency details";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>24h ticker price change for @ViewBag.Name</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <p>Ask:</p>
+        <h2>$@Html.ValueFor(model => model.Ask)</h2>
+        <h2>$@Html.ValueFor(model => model.Ask) %</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <p>Price:</p>
+        <h2>$@Html.ValueFor(model => model.Price)</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <p>Volume:</p>
+        <h2>$@Html.ValueFor(model => model.Volume)</h2>
+    </div>
+</div>

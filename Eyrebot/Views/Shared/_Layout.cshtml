@@ -31,7 +31,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="BinanceCurrency" asp-action="CurrencyDetails">Binance</a></li>
+                    <li><a asp-area="" asp-controller="BinanceCurrency" asp-action="GetCurrencyDetails">Binance</a></li>
+                    <li><a asp-area="" asp-controller="GdaxCurrency" asp-action="GetCurrencyDetails">GDAX</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>

@@ -1,8 +1,8 @@
 ﻿using Eyrebot.Models;
 using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json.Linq;
-using System;
+using Newtonsoft.Json;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace Eyrebot.Services
@@ -16,7 +16,7 @@ namespace Eyrebot.Services
             _config = config;
         }
 
-        public async Task<GdaxCurrencyDetailsModel> GetProductTicker(string symbol)
+        public async Task<GdaxCurrencyDetailsModel> GetProductTicker(string productId)
         {
             var result = new GdaxCurrencyDetailsModel()
             {
@@ -24,34 +24,29 @@ namespace Eyrebot.Services
                 Message = "Failed to get currency details"
             };
 
-            var apiUrl = _config["ApiKeys:Gdax"];
-            var url = $"{apiUrl}/products/{symbol}/ticker";
+            var apiUrl = _config["ApiKeys:GdaxApiUrl"];
+            var tickerUrl = $"{apiUrl}/products/{productId}/ticker";
 
-            var client = new HttpClient();
-
-            var json = await client.GetStringAsync(url);
-            
-            var results = JObject.Parse(json);
-            if (results.ToString().Contains("symbol"))
+            using (var _client = new HttpClient())
             {
-                result.Success = true;
-                result.Message = "Success";
+                _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                _client.DefaultRequestHeaders.Add("User-Agent", ".NET Framework Test Client");
+                
+                var response = await _client.GetStringAsync(tickerUrl);
 
-                result.Symbol = results["symbol"].ToString();
-                result.TradeId = Int32.Parse(results["trade_id"].ToString());
-                result.Price = decimal.Parse(results["price"].ToString());
-                result.Size = decimal.Parse(results["size"].ToString());
-                result.Bid = decimal.Parse(results["bid"].ToString());
-                result.Ask = decimal.Parse(results["ask"].ToString());
-                result.Volume = decimal.Parse(results["volume"].ToString());
-                result.Time = DateTime.Parse(results["time"].ToString());
+                if (response.ToString().Contains("trade_id"))
+                {
+                    result = JsonConvert.DeserializeObject<GdaxCurrencyDetailsModel>(response);
+
+                    result.Success = true;
+                    result.Message = "Success";
+
+                    return result;
+                }
+
+                return result;
+                
             }
-            else
-            {
-                result.Message = $"Unable to retrieve {symbol} currency details";
-                // Todo : Log error
-            }
-            return result;
 
         }
     }

@@ -8,26 +8,32 @@ using Eyrebot.Data;
 using Eyrebot.Models;
 using Eyrebot.Services;
 using AutoMapper;
-using Eyrebot.ViewModels;
 
 namespace Eyrebot
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-            var builder = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.json");
-        }
+        private IHostingEnvironment _env;
+        private IConfigurationRoot _config;
 
-        public IConfiguration Configuration { get; }
+        public Startup(IHostingEnvironment env)
+        {
+            _env = env;
+
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(_env.ContentRootPath)
+                .AddJsonFile("appsettings.json");
+
+            _config = builder.Build();
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton(_config);
+
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(_config.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -36,7 +42,9 @@ namespace Eyrebot
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 
-            services.AddTransient<IBinanaceCurrencyService, BinanceCurrencyService>();
+            services.AddTransient<IBinanceCurrencyService, BinanceCurrencyService>();
+
+            services.AddTransient<IGdaxCurrencyService, GdaxCurrencyService>();
 
             services.AddMvc();
 

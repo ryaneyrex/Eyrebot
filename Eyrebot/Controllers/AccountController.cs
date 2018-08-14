@@ -10,7 +10,7 @@ using Eyrebot.Models;
 using Eyrebot.ViewModels.AccountViewModels;
 using Eyrebot.Services;
 
-namespace Eyrebot.Models
+namespace Eyrebot.Controllers
 {
     [Authorize]
     [Route("[controller]/[action]")]
