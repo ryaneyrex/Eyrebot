@@ -1,0 +1,55 @@
+﻿@model Eyrebot.Models.BinanceCurrencyDetailsModel
+
+@{
+    ViewData["Title"] = "CurrencyDetails";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>24h ticker price change for @ViewBag.Name</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <p>Last purchase price:</p>
+        <h2>$@Html.ValueFor(model => model.RoundedLastPrice)</h2>
+        <h2>$@Html.ValueFor(model => model.RoundedPriceChangePercent)%</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <p>Weighted average price:</p>
+        <h2>$@Html.ValueFor(model => model.RoundedWeightedAvgPrice)</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <p>Previous close price:</p>
+        <h2>$@Html.ValueFor(model => model.RoundedPrevClosePrice)</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <p>High:</p>
+        <h2>$@Html.ValueFor(model => model.RoundedHighPrice)</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <p>Low:</p>
+        <h2>$@Html.ValueFor(model => model.RoundedLowPrice)</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <p>Volume:</p>
+        <h2>$@Html.ValueFor(model => model.RoundedVolume)</h2>
+    </div>
+</div>

@@ -29,9 +29,9 @@ namespace Eyrebot.UnitTests.Controllers
         }
 
         [TestMethod]
-        public void Binance_GetCurrencyDetails_ReturnsResult()
+        public void Binance_CurrencyDetails_ReturnsResult()
         {
-            var controller = _currencyController.GetCurrencyDetails();
+            var controller = _currencyController.CurrencyDetails();
 
             var result = controller.Result;
 

@@ -27,9 +27,9 @@ namespace Eyrebot.UnitTests.Controllers
         }
 
         [TestMethod]
-        public void Gdax_GetCurrencyDetails_ReturnsResult()
+        public void Gdax_CurrencyDetails_ReturnsResult()
         {
-            var controller = _currencyController.GetCurrencyDetails();
+            var controller = _currencyController.CurrencyDetails();
 
             var result = controller.Result;
 

@@ -30,5 +30,14 @@ namespace Eyrebot.Models
         public Int64 FirstId { get; set; }
         public Int64 LastId { get; set; }
         public Int64 Count { get; set; }
+
+
+        public decimal RoundedPriceChangePercent => Math.Round(PriceChangePercent, 2);
+        public decimal RoundedLastPrice => Math.Round(LastPrice, 2);
+        public decimal RoundedWeightedAvgPrice => Math.Round(WeightedAvgPrice, 2);
+        public decimal RoundedPrevClosePrice => Math.Round(PrevClosePrice, 2);
+        public decimal RoundedHighPrice => Math.Round(HighPrice, 2);
+        public decimal RoundedLowPrice => Math.Round(LowPrice, 2);
+        public decimal RoundedVolume => Math.Round(Volume, 2);
     }
 }

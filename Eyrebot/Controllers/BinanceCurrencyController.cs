@@ -14,7 +14,7 @@ namespace Eyrebot.Controllers
             this._currencyService = currencyService;
         }
 
-        public async Task<IActionResult> GetCurrencyDetails()
+        public async Task<IActionResult> CurrencyDetails()
         {
             ViewData["Message"] = "Currency details page";
             ViewData["Name"] = "BTC/USDT";

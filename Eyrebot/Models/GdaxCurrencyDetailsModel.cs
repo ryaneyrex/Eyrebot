@@ -14,5 +14,8 @@ namespace Eyrebot.Models
         public decimal Ask { get; set; }
         public decimal Volume { get; set; }
         public DateTime Time { get; set; }
+
+        public decimal RoundedPrice => Math.Round(Price, 2);
+        public decimal RoundedVolume => Math.Round(Volume, 2);
     }
 }

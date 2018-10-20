@@ -1,0 +1,41 @@
+﻿@model Eyrebot.Models.GdaxCurrencyDetailsModel
+
+@{
+    ViewData["Title"] = "Gdax currency details";
+}
+@using (Html.BeginForm("CurrencyDetails", "GdaxCurrency", FormMethod.Post, new { id = "frmCurrenyDetails" }))
+{
+    <div class="row">
+        <div class="col-md-4">
+            <h2>24h ticker price change for </h2>
+        </div>
+        <div class="col-md-8"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">@Html.DropDownListFor(m => m.Symbol, (IEnumerable<SelectListItem>)ViewBag.CurrencySymbols, null, new { @class = "form-control", onchange = "document.getElementById('frmCurrenyDetails').submit();" })</div>
+ 
+        <div class="col-md-8"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Asking price:</h4>
+            <h2>@Html.ValueFor(model => model.Ask)</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Current price:</h4>
+            <h2>@Html.ValueFor(model => model.RoundedPrice)</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Volume:</h4>
+            <h2>@Html.ValueFor(model => model.RoundedVolume)</h2>
+        </div>
+    </div>
+}
